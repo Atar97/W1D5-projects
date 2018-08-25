@@ -38,9 +38,9 @@ class KnightPathFinder
     all_moves
   end
 
-  def move_tree(pos)
+  def build_move_tree
       # debugger
-    queue = [PolyTreeNode.new(pos)]
+    queue = [PolyTreeNode.new(@visited_position[0])]
 
     until queue.empty?
       parent = queue.shift
