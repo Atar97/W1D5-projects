@@ -1,13 +1,8 @@
 require_relative '00_tree_node'
-
-one = PolyTreeNode.new(1)
-two = PolyTreeNode.new(2)
-three = PolyTreeNode.new(3)
-
-two.parent = one
-three.parent = one
-puts one
-
-puts one.dfs(2)
-puts one.dfs(3)
-puts one
+require_relative'knight_path'
+knight1 = KnightPathFinder.new([0,0])
+knight1.move_tree([0,0])
+puts knight1.to_s
+puts "\n\n\n\n\n"
+puts knight1.find_node_dfs([4,6])
+puts knight1.find_node_bfs([1,6])

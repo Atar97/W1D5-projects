@@ -55,5 +55,13 @@ class KnightPathFinder
     @root
   end
 
+  def find_node_dfs(target_pos)
+    @root.dfs(target_pos)
+  end
+
+  def find_node_bfs(target_pos)
+    @root.bfs(target_pos)
+  end
+
 
 end
