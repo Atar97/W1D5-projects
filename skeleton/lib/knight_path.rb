@@ -34,6 +34,7 @@ class KnightPathFinder
   end 
   
   def move_tree(pos)
+    #your algorithm should start by making nodes 
     queue = [pos.dup]
     
     until queue.empty?
