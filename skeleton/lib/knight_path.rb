@@ -55,13 +55,39 @@ class KnightPathFinder
     @root
   end
 
-  def find_node_dfs(target_pos)
+  def find_dfs(target_pos)
     @root.dfs(target_pos)
   end
 
-  def find_node_bfs(target_pos)
+  def find_bfs(target_pos)
     @root.bfs(target_pos)
   end
 
+
+  def trace_path_back(end_pos)
+    end_node = most_efficient_search(end_pos)
+    result = [end_node.value]
+    until end_node == @root
+      end_node = end_node.parent
+      result.unshift(end_node.value)
+    end
+    result
+  end
+
+  private
+
+  def self.use_bfs?(start_pos, end_pos)
+    difference = (start_pos[0] - end_pos[0]).abs
+    difference += (start_pos[1] - end_pos[1]).abs
+    difference < 8
+  end
+
+  def most_efficient_search(end_pos)
+    if KnightPathFinder.use_bfs?(@root.value, end_pos)
+      self.find_bfs(end_pos)
+    else
+      self.find_dfs(end_pos)
+    end
+  end
 
 end
