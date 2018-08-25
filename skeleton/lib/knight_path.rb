@@ -1,6 +1,8 @@
 require_relative '00_tree_node'
 require 'byebug'
 class KnightPathFinder
+  attr_reader :visited_position, :root
+
   def initialize(pos)
     @visited_position = [pos]
     @root = nil
@@ -25,6 +27,10 @@ class KnightPathFinder
     result
   end
 
+  def to_s
+    "#{@root.to_s} Visted = #{@visited_position}"
+  end
+
   def new_move_position(pos_now)
     all_moves = KnightPathFinder.valid_move(pos_now)
     all_moves.reject! {|move| @visited_position.include?(move)}
@@ -33,7 +39,7 @@ class KnightPathFinder
   end
 
   def move_tree(pos)
-    # debugger
+      # debugger
     queue = [PolyTreeNode.new(pos)]
 
     until queue.empty?
